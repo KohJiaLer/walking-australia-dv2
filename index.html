@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Walking Australia</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f4ef;
+      color: #22302b;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 56px 28px 80px;
+    }
+
+    h1 {
+      font-size: 48px;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: 30px;
+      margin-top: 64px;
+      margin-bottom: 12px;
+    }
+
+    p {
+      line-height: 1.6;
+    }
+
+    .subtitle {
+      font-size: 20px;
+      color: #5f6c66;
+      max-width: 760px;
+    }
+
+    .section-intro {
+      max-width: 800px;
+      color: #5f6c66;
+      margin-bottom: 28px;
+    }
+
+    .chart-card {
+      background: white;
+      padding: 24px;
+      border-radius: 12px;
+      margin: 24px 0;
+    }
+
+    .chart-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .map-stack {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .chart-card {
+      min-width: 0;
+    }
+
+    .vega-embed {
+      width: 100%;
+    }
+
+    .vega-embed svg {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .source {
+      font-size: 12px;
+      color: #77817c;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 800px) {
+      .chart-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 36px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<main>
+
+  <header>
+    <h1>Walking Australia</h1>
+
+    <p class="subtitle">
+      Exploring who bushwalks, where participation is strongest,
+      and how Australians engage with NSW national parks.
+    </p>
+  </header>
+
+  <section>
+    <h2>1. Bushwalking in Australia</h2>
+
+    <p class="section-intro">
+      Bushwalking is one of Australia’s most popular physical activities.
+      Participation varies across age groups, and much of it happens outside
+      formally organised activities.
+    </p>
+
+    <div id="chart1" class="chart-card"></div>
+
+    <div class="chart-grid">
+      <div id="chart2" class="chart-card"></div>
+      <div id="chart6" class="chart-card"></div>
+    </div>
+
+    <p class="source">
+      Source: Australian Sports Commission, AusPlay, 30 April 2026.
+    </p>
+  </section>
+
+
+  <section>
+    <h2>2. Where are Australia’s bushwalkers?</h2>
+
+    <p class="section-intro">
+      Participation rate and participant numbers tell different stories.
+      Smaller states can have very high participation rates, while larger
+      states contain more bushwalkers overall.
+    </p>
+
+    <div class="map-stack">
+      <div id="chart4" class="chart-card"></div>
+      <div id="chart5" class="chart-card"></div>
+    </div>
+
+    <p class="source">
+      Source: Australian Sports Commission, AusPlay state and territory data tables.
+    </p>
+  </section>
+
+
+  <section>
+    <h2>3. From bushwalking to NSW national parks</h2>
+
+    <p class="section-intro">
+      Looking more closely at NSW shows how visitation differs between park
+      regions and how strongly Greater Sydney contributes to overall park use.
+    </p>
+
+    <div id="chart3" class="chart-card"></div>
+
+    <p class="source">
+      Source: NSW National Parks and Wildlife Service, Parks Visitation Survey FY24–25.
+    </p>
+  </section>
+
+
+  <section>
+    <h2>4. What does a park visit look like?</h2>
+
+    <p class="section-intro">
+      Most park walks last between one and four hours, while interstate
+      visitation is concentrated most strongly from Queensland and Victoria.
+    </p>
+
+    <div class="chart-grid">
+      <div id="chart7" class="chart-card"></div>
+      <div id="chart8" class="chart-card"></div>
+    </div>
+
+    <p class="source">
+      Source: NSW National Parks and Wildlife Service, Parks Visitation Survey FY24–25.
+    </p>
+  </section>
+
+</main>
+
+<script>
+  vegaEmbed('#chart1', 'js/specs/chart1_activity_ranking.json', {actions:false});
+  vegaEmbed('#chart2', 'js/specs/chart2_dumbbell.json', {actions:false});
+  vegaEmbed('#chart3', 'js/specs/chart3_branch_heatmap.json', {actions:false});
+  vegaEmbed('#chart4', 'js/specs/chart4_choropleth.json', {actions:false});
+  vegaEmbed('#chart5', 'js/specs/chart5_proportional_symbol.json', {actions:false});
+  vegaEmbed('#chart6', 'js/specs/chart6_activity_slope.json', {actions:false});
+  vegaEmbed('#chart7', 'js/specs/chart7_walking_waffle_fixed.json', {actions:false});
+  vegaEmbed('#chart8', 'js/specs/chart8_interstate_flow_map.json', {actions:false});
+</script>
+
+</body>
+</html>

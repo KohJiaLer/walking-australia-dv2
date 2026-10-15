@@ -1,0 +1,71 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Top 10 adult physical activities in Australia, 2025, with bush walking highlighted.",
+  "width": 650,
+  "height": 360,
+  "data": {
+    "url": "../../data/activity_ranking.csv"
+  },
+  "transform": [
+    {
+      "calculate": "datum.highlight_bushwalking == 1 ? 'Bush walking' : 'Other activities'",
+      "as": "group"
+    }
+  ],
+  "mark": {
+    "type": "bar",
+    "cornerRadiusEnd": 3
+  },
+  "encoding": {
+    "y": {
+      "field": "activity",
+      "type": "nominal",
+      "sort": "-x",
+      "title": null,
+      "axis": {
+        "labelLimit": 180
+      }
+    },
+    "x": {
+      "field": "participation_rate_pct",
+      "type": "quantitative",
+      "title": "Adult participation rate (%)",
+      "axis": {
+        "format": ".0f"
+      }
+    },
+    "color": {
+      "field": "group",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "Bush walking",
+          "Other activities"
+        ],
+        "range": [
+          "#355C4D",
+          "#C9D2CE"
+        ]
+      },
+      "legend": null
+    },
+    "tooltip": [
+      {
+        "field": "activity",
+        "type": "nominal",
+        "title": "Activity"
+      },
+      {
+        "field": "participation_rate_pct",
+        "type": "quantitative",
+        "title": "Participation rate",
+        "format": ".1f"
+      }
+    ]
+  },
+  "title": {
+    "text": "Bushwalking ranks among Australia's most popular activities",
+    "subtitle": "Adult participation rate, January\u2013December 2025",
+    "anchor": "start"
+  }
+}

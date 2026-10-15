@@ -1,0 +1,185 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": 520,
+  "height": 340,
+
+  "title": {
+    "text": "Bushwalking participation increased from 2024 to 2025",
+    "subtitle": "Selected outdoor activities, adult participation rate",
+    "anchor": "start"
+  },
+
+  "data": {
+    "url": "../../data/activity_change.csv"
+  },
+
+  "transform": [
+    {
+      "calculate": "datum.activity == 'Bush walking' ? 'Bush walking' : 'Other activities'",
+      "as": "group"
+    }
+  ],
+
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 2
+      },
+
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal",
+          "title": null,
+          "sort": [2024, 2025],
+          "axis": {
+            "labelAngle": 0
+          }
+        },
+
+        "y": {
+          "field": "participation_rate_pct",
+          "type": "quantitative",
+          "title": "Participation rate (%)",
+          "scale": {
+            "domain": [0, 20]
+        }
+        },
+
+        "detail": {
+          "field": "activity"
+        },
+
+        "color": {
+          "field": "group",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Bush walking",
+              "Other activities"
+            ],
+            "range": [
+              "#355C4D",
+              "#C9D2CE"
+            ]
+          },
+          "legend": null
+        },
+
+        "opacity": {
+          "condition": {
+            "test": "datum.activity == 'Bush walking'",
+            "value": 1
+          },
+          "value": 0.7
+        }
+      }
+    },
+
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 80
+      },
+
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal",
+          "sort": [2024, 2025]
+        },
+
+        "y": {
+          "field": "participation_rate_pct",
+          "type": "quantitative",
+          "title": "Participation rate (%)",
+          "scale": {
+            "domain": [0, 20]
+          }
+        },
+
+        "color": {
+          "field": "group",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Bush walking",
+              "Other activities"
+            ],
+            "range": [
+              "#355C4D",
+              "#C9D2CE"
+            ]
+          },
+          "legend": null
+        },
+
+        "tooltip": [
+          {
+            "field": "activity",
+            "type": "nominal",
+            "title": "Activity"
+          },
+          {
+            "field": "year",
+            "type": "ordinal",
+            "title": "Year"
+          },
+          {
+            "field": "participation_rate_pct",
+            "type": "quantitative",
+            "title": "Participation rate",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+
+    {
+      "transform": [
+        {
+          "filter": "datum.year == 2025 && (datum.activity == 'Bush walking' || datum.activity == 'Running/jogging' || datum.activity == 'Swimming' || datum.activity == 'Cycling' || datum.activity == 'Mountain biking')"
+        }
+      ],
+
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 10,
+        "fontSize": 10
+      },
+
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal",
+          "sort": [2024, 2025]
+        },
+
+        "y": {
+          "field": "participation_rate_pct",
+          "type": "quantitative",
+          "title": "Participation rate (%)",
+          "scale": {
+            "domain": [0, 20]
+          }
+        },
+
+        "text": {
+          "field": "activity"
+        },
+
+        "color": {
+          "condition": {
+            "test": "datum.activity == 'Bush walking'",
+            "value": "#355C4D"
+          },
+          "value": "#6F7773"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,200 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 560,
+  "height": 430,
+  "title": {
+    "text": "Queensland and Victoria generate the most interstate visits to NSW parks",
+    "subtitle": "Estimated FY24-25 interstate visits; line width represents visit volume",
+    "anchor": "start"
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "../../data/maps/australia_states.json",
+        "format": {
+          "type": "topojson",
+          "feature": "STE_2026_AUST_GDA2020"
+        }
+      },
+      "projection": {
+        "type": "mercator"
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#F0F2EF",
+        "stroke": "#A3ADA8",
+        "strokeWidth": 1
+      }
+    },
+    {
+      "data": {
+        "url": "../../data/interstate_flow_map.csv"
+      },
+      "projection": {
+        "type": "mercator"
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#355C4D",
+        "opacity": 0.65
+      },
+      "encoding": {
+        "longitude": {
+          "field": "source_longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "source_latitude",
+          "type": "quantitative"
+        },
+        "longitude2": {
+          "field": "dest_longitude"
+        },
+        "latitude2": {
+          "field": "dest_latitude"
+        },
+        "size": {
+          "field": "visits",
+          "type": "quantitative",
+          "title": "Estimated visits",
+          "scale": {
+            "range": [
+              1,
+              12
+            ]
+          },
+          "legend": {
+            "format": ".2s"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "origin",
+            "type": "nominal",
+            "title": "Origin"
+          },
+          {
+            "field": "visits",
+            "type": "quantitative",
+            "title": "Estimated visits",
+            "format": ","
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "../../data/interstate_flow_map.csv"
+      },
+      "projection": {
+        "type": "mercator"
+      },
+      "mark": {
+        "type": "circle",
+        "filled": true,
+        "size": 70,
+        "color": "#355C4D",
+        "stroke": "white",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "longitude": {
+          "field": "source_longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "source_latitude",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "origin",
+            "type": "nominal",
+            "title": "Origin"
+          },
+          {
+            "field": "visits",
+            "type": "quantitative",
+            "title": "Estimated visits",
+            "format": ","
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "label": "NSW parks",
+            "longitude": 147.0,
+            "latitude": -32.2
+          }
+        ]
+      },
+      "projection": {
+        "type": "mercator"
+      },
+      "mark": {
+        "type": "circle",
+        "filled": true,
+        "size": 140,
+        "color": "#B68A5A",
+        "stroke": "white",
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "label",
+            "type": "nominal",
+            "title": "Destination"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "label": "NSW parks",
+            "longitude": 147.0,
+            "latitude": -32.2
+          }
+        ]
+      },
+      "projection": {
+        "type": "mercator"
+      },
+      "mark": {
+        "type": "text",
+        "dx": 8,
+        "dy": -8,
+        "align": "left",
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "color": "#5D4A36"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        }
+      }
+    }
+  ]
+}

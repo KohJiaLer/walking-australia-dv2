@@ -1,0 +1,118 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": 520,
+  "height": 320,
+
+  "title": {
+    "text": "Most bushwalking happens outside organised activities",
+    "subtitle": "Total and organised bushwalking participation by age group, 2025",
+    "anchor": "start"
+  },
+
+  "data": {
+    "url": "../../data/bushwalking_age_organised.csv"
+  },
+
+  "encoding": {
+    "y": {
+      "field": "age_group",
+      "type": "ordinal",
+      "title": "Age group",
+      "sort": [
+        "15-17",
+        "18-24",
+        "25-34",
+        "35-44",
+        "45-54",
+        "55-64",
+        "65+"
+      ]
+    }
+  },
+
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "strokeWidth": 3,
+        "color": "#AAB7B1"
+      },
+
+      "encoding": {
+        "x": {
+          "field": "organised_participation_pct",
+          "type": "quantitative",
+          "title": "Participation rate (%)",
+          "scale": {
+            "domain": [0, 25]
+          }
+        },
+
+        "x2": {
+          "field": "total_participation_pct"
+        }
+      }
+    },
+
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 100,
+        "color": "#A87C4F"
+      },
+
+      "encoding": {
+        "x": {
+          "field": "organised_participation_pct",
+          "type": "quantitative"
+        },
+
+        "tooltip": [
+          {
+            "field": "age_group",
+            "type": "ordinal",
+            "title": "Age group"
+          },
+          {
+            "field": "organised_participation_pct",
+            "type": "quantitative",
+            "title": "Organised",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 120,
+        "color": "#355C4D"
+      },
+
+      "encoding": {
+        "x": {
+          "field": "total_participation_pct",
+          "type": "quantitative"
+        },
+
+        "tooltip": [
+          {
+            "field": "age_group",
+            "type": "ordinal",
+            "title": "Age group"
+          },
+          {
+            "field": "total_participation_pct",
+            "type": "quantitative",
+            "title": "Total participation",
+            "format": ".1f"
+          }
+        ]
+      }
+    }
+  ]
+}

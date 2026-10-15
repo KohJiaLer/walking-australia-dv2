@@ -1,0 +1,9 @@
+state,state_name,participation_rate_pct,estimated_participants,longitude,latitude
+NSW,New South Wales,17.358,1225023,147.0,-32.2
+ACT,Australian Capital Territory,26.847,106848,149.1,-35.3
+NT,Northern Territory,18.957,39501,133.0,-20.0
+QLD,Queensland,17.684,818181,145.5,-23.0
+SA,South Australia,15.384,243246,135.5,-30.0
+TAS,Tasmania,27.515,132990,146.7,-42.0
+VIC,Victoria,16.125,937035,144.5,-37.0
+WA,Western Australia,18.273,451127,122.5,-25.5

@@ -1,0 +1,78 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": 560,
+  "height": 430,
+
+  "title": {
+    "text": "Bushwalking participation is highest in Tasmania and the ACT",
+    "subtitle": "Adult bushwalking participation rate by state and territory, 2025",
+    "anchor": "start"
+  },
+
+  "data": {
+    "url": "../../data/maps/australia_states.json",
+    "format": {
+      "type": "topojson",
+      "feature": "STE_2026_AUST_GDA2020"
+    }
+  },
+
+  "transform": [
+    {
+      "lookup": "properties.STE_NAME26",
+      "from": {
+        "data": {
+          "url": "../../data/state_bushwalking.csv"
+        },
+        "key": "state_name",
+        "fields": [
+          "state",
+          "participation_rate_pct",
+          "estimated_participants"
+        ]
+      }
+    }
+  ],
+
+  "projection": {
+    "type": "mercator"
+  },
+
+  "mark": {
+    "type": "geoshape",
+    "stroke": "white",
+    "strokeWidth": 1
+  },
+
+  "encoding": {
+    "color": {
+      "field": "participation_rate_pct",
+      "type": "quantitative",
+      "title": "Participation rate (%)",
+      "scale": {
+        "scheme": "greens"
+      }
+    },
+
+    "tooltip": [
+      {
+        "field": "properties.STE_NAME26",
+        "type": "nominal",
+        "title": "State / territory"
+      },
+      {
+        "field": "participation_rate_pct",
+        "type": "quantitative",
+        "title": "Participation rate",
+        "format": ".1f"
+      },
+      {
+        "field": "estimated_participants",
+        "type": "quantitative",
+        "title": "Estimated participants",
+        "format": ","
+      }
+    ]
+  }
+}
