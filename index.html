@@ -193,14 +193,23 @@
 </main>
 
 <script>
-  vegaEmbed('#chart1', 'js/specs/chart1_activity_ranking.json', {actions:false});
-  vegaEmbed('#chart2', 'js/specs/chart2_dumbbell.json', {actions:false});
-  vegaEmbed('#chart3', 'js/specs/chart3_branch_heatmap.json', {actions:false});
-  vegaEmbed('#chart4', 'js/specs/chart4_choropleth.json', {actions:false});
-  vegaEmbed('#chart5', 'js/specs/chart5_proportional_symbol.json', {actions:false});
-  vegaEmbed('#chart6', 'js/specs/chart6_activity_slope.json', {actions:false});
-  vegaEmbed('#chart7', 'js/specs/chart7_walking_waffle_fixed.json', {actions:false});
-  vegaEmbed('#chart8', 'js/specs/chart8_interstate_flow_map.json', {actions:false});
+  const baseURL = new URL('.', window.location.href).href;
+
+  const embedOptions = {
+    actions: false,
+    loader: {
+      baseURL: baseURL
+    }
+  };
+
+  vegaEmbed('#chart1', 'js/specs/chart1_activity_ranking.json', embedOptions);
+  vegaEmbed('#chart2', 'js/specs/chart2_dumbbell.json', embedOptions);
+  vegaEmbed('#chart3', 'js/specs/chart3_branch_heatmap.json', embedOptions);
+  vegaEmbed('#chart4', 'js/specs/chart4_choropleth.json', embedOptions);
+  vegaEmbed('#chart5', 'js/specs/chart5_proportional_symbol.json', embedOptions);
+  vegaEmbed('#chart6', 'js/specs/chart6_activity_slope.json', embedOptions);
+  vegaEmbed('#chart7', 'js/specs/chart7_walking_waffle_fixed.json', embedOptions);
+  vegaEmbed('#chart8', 'js/specs/chart8_interstate_flow_map.json', embedOptions);
 </script>
 
 </body>

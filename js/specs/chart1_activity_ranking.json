@@ -4,7 +4,7 @@
   "width": 650,
   "height": 360,
   "data": {
-    "url": "/walking-australia-dv2/data/activity_ranking.csv"
+    "url": "/data/activity_ranking.csv"
   },
   "transform": [
     {
