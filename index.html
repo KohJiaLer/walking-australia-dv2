@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Walking Australia</title>
+  <title>Hiking in Australia</title>
 
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
@@ -44,6 +44,14 @@
       max-width: 760px;
     }
 
+    .terminology-note {
+      max-width: 760px;
+      margin-top: 12px;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #77817c;
+    }
+
     .section-intro {
       max-width: 800px;
       color: #5f6c66;
@@ -72,6 +80,14 @@
 
     .chart-card {
       min-width: 0;
+    }
+
+    .chart-note {
+      max-width: 760px;
+      margin: -10px 0 28px;
+      font-size: 15px;
+      line-height: 1.5;
+      color: #5f6c66;
     }
 
     .vega-embed {
@@ -106,21 +122,26 @@
 <main>
 
   <header>
-    <h1>Walking Australia</h1>
+    <h1>Hiking in Australia</h1>
 
     <p class="subtitle">
-      Exploring who bushwalks, where participation is strongest,
-      and how Australians engage with NSW national parks.
+      Exploring hiking participation across Australia and how people
+      experience NSW national parks.
+    </p>
+
+    <p class="terminology-note">
+      Note: AusPlay reports hiking-related participation under the activity
+      category “Bush walking”.
     </p>
   </header>
 
   <section>
-    <h2>1. Bushwalking in Australia</h2>
+    <h2>1. Hiking participation in Australia</h2>
 
     <p class="section-intro">
-      Bushwalking is one of Australia’s most popular physical activities.
-      Participation varies across age groups, and much of it happens outside
-      formally organised activities.
+      Hiking is a popular outdoor activity across Australia. AusPlay records
+      this activity as “Bush walking”, allowing us to compare its popularity,
+      age profile and recent participation trends.
     </p>
 
     <div id="chart1" class="chart-card"></div>
@@ -137,12 +158,12 @@
 
 
   <section>
-    <h2>2. Where are Australia’s bushwalkers?</h2>
+    <h2>2. Where is hiking most popular?</h2>
 
     <p class="section-intro">
-      Participation rate and participant numbers tell different stories.
-      Smaller states can have very high participation rates, while larger
-      states contain more bushwalkers overall.
+      Hiking participation varies across Australia. Tasmania and the ACT
+      have the highest participation rates, while NSW has the largest
+      estimated number of people taking part.
     </p>
 
     <div class="map-stack">
@@ -157,27 +178,34 @@
 
 
   <section>
-    <h2>3. From bushwalking to NSW national parks</h2>
+    <h2>3. Hiking and NSW national parks</h2>
 
     <p class="section-intro">
-      Looking more closely at NSW shows how visitation differs between park
-      regions and how strongly Greater Sydney contributes to overall park use.
+      National parks are an important setting for hiking. Looking more
+      closely at NSW shows how park visitation varies across regions and
+      how strongly Greater Sydney contributes to overall visits.
     </p>
 
     <div id="chart3" class="chart-card"></div>
 
+    <p class="chart-note">
+      Greater Sydney accounts for the largest share of recent NSW park visitation,
+      with the gap widening noticeably in FY24–25.
+    </p>
     <p class="source">
+
       Source: NSW National Parks and Wildlife Service, Parks Visitation Survey FY24–25.
     </p>
   </section>
 
 
   <section>
-    <h2>4. What does a park visit look like?</h2>
+    <h2>4. What do NSW national park visits look like?</h2>
 
     <p class="section-intro">
-      Most park walks last between one and four hours, while interstate
-      visitation is concentrated most strongly from Queensland and Victoria.
+      Most walking trips in NSW national parks last between one and four
+      hours, while interstate visitors come most strongly from Queensland
+      and Victoria.
     </p>
 
     <div class="chart-grid">

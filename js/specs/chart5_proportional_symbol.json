@@ -5,15 +5,15 @@
   "height": 430,
 
   "title": {
-    "text": "New South Wales has the largest number of bushwalkers",
-    "subtitle": "Estimated adult bushwalking participants by state and territory, 2025",
+    "text": "NSW has Australia's largest estimated hiking population",
+    "subtitle": "Estimated adults participating in “Bush walking”, 2025",
     "anchor": "start"
   },
 
   "layer": [
     {
       "data": {
-        "url": "/data/maps/australia_states.json",
+        "url": "data/maps/australia_states.json",
         "format": {
           "type": "topojson",
           "feature": "STE_2026_AUST_GDA2020"
@@ -21,7 +21,10 @@
       },
 
       "projection": {
-        "type": "mercator"
+        "type": "conicEqualArea",
+        "parallels": [-18, -36],
+        "rotate": [-134, 0, 0],
+        "center": [0, -25]
       },
 
       "mark": {
@@ -38,7 +41,10 @@
       },
 
       "projection": {
-        "type": "mercator"
+        "type": "conicEqualArea",
+        "parallels": [-18, -36],
+        "rotate": [-134, 0, 0],
+        "center": [0, -25]
       },
 
       "mark": {
@@ -64,7 +70,7 @@
           "type": "quantitative",
           "title": "Estimated participants",
           "scale": {
-            "range": [100, 3000]
+            "range": [80, 2200]
           },
           "legend": {
             "format": ".2s"

@@ -3,12 +3,12 @@
   "width": 360,
   "height": 360,
   "title": {
-    "text": "Most park walks last between one and four hours",
+    "text": "Most national park walks last between one and four hours",
     "subtitle": "Each square represents about 1% of walkers; reported values sum to 99% due to rounding",
     "anchor": "start"
   },
   "data": {
-    "url": "/data/walking_duration_waffle_final.csv"
+    "url": "data/walking_duration_waffle_final.csv"
   },
   "mark": {
     "type": "square",

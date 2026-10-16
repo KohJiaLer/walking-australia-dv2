@@ -4,11 +4,11 @@
   "width": 650,
   "height": 360,
   "data": {
-    "url": "/data/activity_ranking.csv"
+    "url": "data/activity_ranking.csv"
   },
   "transform": [
     {
-      "calculate": "datum.highlight_bushwalking == 1 ? 'Bush walking' : 'Other activities'",
+      "calculate": "datum.activity == 'Bush walking' ? 'Bush walking' : 'Other activities'",
       "as": "group"
     }
   ],
@@ -64,8 +64,8 @@
     ]
   },
   "title": {
-    "text": "Bushwalking ranks among Australia's most popular activities",
-    "subtitle": "Adult participation rate, January\u2013December 2025",
+    "text": "Hiking ranks among Australia's most popular activities",
+    "subtitle": "Adult participation rate, January–December 2025 • AusPlay category: “Bush walking”",
     "anchor": "start"
   }
 }

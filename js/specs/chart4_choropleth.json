@@ -5,8 +5,8 @@
   "height": 430,
 
   "title": {
-    "text": "Bushwalking participation is highest in Tasmania and the ACT",
-    "subtitle": "Adult bushwalking participation rate by state and territory, 2025",
+    "text": "Tasmania and the ACT have the highest hiking participation rates",
+    "subtitle": "Share of adults participating in “Bush walking”, 2025",
     "anchor": "start"
   },
 
@@ -23,7 +23,7 @@
       "lookup": "properties.STE_NAME26",
       "from": {
         "data": {
-          "url": "/data/state_bushwalking.csv"
+          "url": "data/state_bushwalking.csv"
         },
         "key": "state_name",
         "fields": [
@@ -36,7 +36,10 @@
   ],
 
   "projection": {
-    "type": "mercator"
+    "type": "conicEqualArea",
+    "parallels": [-18, -36],
+    "rotate": [-134, 0, 0],
+    "center": [0, -25]
   },
 
   "mark": {

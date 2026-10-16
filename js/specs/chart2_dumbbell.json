@@ -5,13 +5,16 @@
   "height": 320,
 
   "title": {
-    "text": "Most bushwalking happens outside organised activities",
-    "subtitle": "Total and organised bushwalking participation by age group, 2025",
+    "text": "Only a small share of hiking participation is formally organised",
+    "subtitle": [
+      "Total and organised hiking participation by age group, 2025 • AusPlay category: “Bush walking”",
+      "Green = total participation  |  Brown = organised participation"
+    ],
     "anchor": "start"
   },
 
   "data": {
-    "url": "/data/bushwalking_age_organised.csv"
+    "url": "data/bushwalking_age_organised.csv"
   },
 
   "encoding": {
