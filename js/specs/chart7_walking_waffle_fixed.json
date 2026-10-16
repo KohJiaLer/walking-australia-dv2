@@ -8,7 +8,7 @@
     "anchor": "start"
   },
   "data": {
-    "url": "../../data/walking_duration_waffle_final.csv"
+    "url": "/data/walking_duration_waffle_final.csv"
   },
   "mark": {
     "type": "square",

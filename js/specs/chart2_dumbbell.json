@@ -11,7 +11,7 @@
   },
 
   "data": {
-    "url": "../../data/bushwalking_age_organised.csv"
+    "url": "/data/bushwalking_age_organised.csv"
   },
 
   "encoding": {

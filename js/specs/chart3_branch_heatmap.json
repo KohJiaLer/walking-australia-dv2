@@ -11,7 +11,7 @@
   },
 
   "data": {
-    "url": "../../data/branch_visitation_history.csv"
+    "url": "/data/branch_visitation_history.csv"
   },
 
   "mark": {

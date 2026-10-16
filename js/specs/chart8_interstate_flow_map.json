@@ -10,7 +10,7 @@
   "layer": [
     {
       "data": {
-        "url": "../../data/maps/australia_states.json",
+        "url": "/data/maps/australia_states.json",
         "format": {
           "type": "topojson",
           "feature": "STE_2026_AUST_GDA2020"
