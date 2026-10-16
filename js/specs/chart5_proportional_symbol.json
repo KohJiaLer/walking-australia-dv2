@@ -34,7 +34,7 @@
 
     {
       "data": {
-        "url": "../../data/state_bushwalking.csv"
+        "url": "/data/state_bushwalking.csv"
       },
 
       "projection": {

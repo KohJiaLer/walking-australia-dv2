@@ -28,7 +28,7 @@
     },
     {
       "data": {
-        "url": "../../data/interstate_flow_map.csv"
+        "url": "/data/interstate_flow_map.csv"
       },
       "projection": {
         "type": "mercator"
@@ -84,7 +84,7 @@
     },
     {
       "data": {
-        "url": "../../data/interstate_flow_map.csv"
+        "url": "/data/interstate_flow_map.csv"
       },
       "projection": {
         "type": "mercator"

@@ -23,7 +23,7 @@
       "lookup": "properties.STE_NAME26",
       "from": {
         "data": {
-          "url": "../../data/state_bushwalking.csv"
+          "url": "/data/state_bushwalking.csv"
         },
         "key": "state_name",
         "fields": [
