@@ -9,10 +9,23 @@
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600;700&display=swap"
+    rel="stylesheet">
+  
   <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: "Inter", "Segoe UI", Arial, sans-serif;
       background: #f5f4ef;
       color: #22302b;
     }
@@ -20,56 +33,93 @@
     main {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 56px 28px 80px;
+      padding: 48px 32px 72px;
+    }
+
+    header {
+      margin-bottom: 56px;
     }
 
     h1 {
-      font-size: 48px;
-      margin-bottom: 8px;
+      font-family: "Lora", Georgia, serif;
+      font-size: 52px;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+      margin: 0 0 16px;
+      color: #20372f;
     }
 
     h2 {
-      font-size: 30px;
-      margin-top: 64px;
-      margin-bottom: 12px;
+      font-family: "Lora", Georgia, serif;
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin: 0 0 14px;
+      color: #20372f;
     }
 
     p {
       line-height: 1.6;
     }
 
+    section {
+      margin-bottom: 56px;
+    }
+
     .subtitle {
       font-size: 20px;
-      color: #5f6c66;
-      max-width: 760px;
+      line-height: 1.6;
+      font-weight: 400;
+      color: #56655f;
+      max-width: 720px;
+      margin-bottom: 10px;
     }
 
     .terminology-note {
-      max-width: 760px;
+      max-width: 720px;
       margin-top: 12px;
-      font-size: 14px;
+      font-size: 13px;
       line-height: 1.5;
-      color: #77817c;
+      color: #738079;
     }
 
     .section-intro {
-      max-width: 800px;
+      max-width: 760px;
+      font-size: 17px;
+      line-height: 1.6;
       color: #5f6c66;
-      margin-bottom: 28px;
+      margin: 0 0 22px;
     }
 
     .chart-card {
-      background: white;
+      background: #ffffff;
       padding: 24px;
-      border-radius: 12px;
-      margin: 24px 0;
+      border-radius: 14px;
+      margin: 16px 0;
+      min-width: 0;
+      overflow: hidden;
+
+      box-shadow:
+        0 1px 2px rgba(20, 40, 30, 0.04),
+        0 5px 14px rgba(20, 40, 30, 0.035);
     }
 
     .chart-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
       align-items: start;
+    }
+
+    .chart-grid .chart-card,
+    .map-stack .chart-card {
+      margin: 0;
+    }
+
+    .chart-grid,
+    .map-stack {
+      margin: 16px 0;
     }
 
     .map-stack {
@@ -78,16 +128,15 @@
       gap: 24px;
     }
 
-    .chart-card {
-      min-width: 0;
-    }
-
     .chart-note {
       max-width: 760px;
-      margin: -10px 0 28px;
+      margin: -6px 0 28px;
+      padding-left: 14px;
+      border-left: 3px solid #B68A5A;
       font-size: 15px;
-      line-height: 1.5;
-      color: #5f6c66;
+      font-weight: 500;
+      line-height: 1.55;
+      color: #4f5e57;
     }
 
     .vega-embed {
@@ -100,19 +149,59 @@
       display: block;
     }
 
+    .page-footer {
+      margin-top: 72px;
+      padding-top: 24px;
+      border-top: 1px solid #d9ddd9;
+      color: #6f7b75;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .page-footer p {
+      margin: 4px 0;
+    }
+
     .source {
       font-size: 12px;
-      color: #77817c;
-      margin-top: 10px;
+      line-height: 1.5;
+      color: #7a8680;
+      margin: 8px 0 0;
+    }
+
+    .source a {
+      color: #355C4D;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .source a:hover {
+      color: #20372f;
     }
 
     @media (max-width: 800px) {
+      main {
+        padding: 36px 18px 56px;
+      }
+
       .chart-grid {
         grid-template-columns: 1fr;
       }
 
       h1 {
         font-size: 36px;
+      }
+
+      h2 {
+        font-size: 27px;
+      }
+
+      .subtitle {
+        font-size: 18px;
+      }
+
+      .chart-card {
+        padding: 18px;
       }
     }
   </style>
@@ -152,7 +241,15 @@
     </div>
 
     <p class="source">
-      Source: Australian Sports Commission, AusPlay, 30 April 2026.
+      Source:
+      <a
+        href="https://www.ausport.gov.au/clearinghouse/research/ausplay/results/data-tables"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Australian Sports Commission, AusPlay
+      </a>,
+      30 April 2026.
     </p>
   </section>
 
@@ -172,29 +269,43 @@
     </div>
 
     <p class="source">
-      Source: Australian Sports Commission, AusPlay state and territory data tables.
+      Source:
+      <a
+        href="https://www.ausport.gov.au/clearinghouse/research/ausplay/results/data-tables"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Australian Sports Commission, AusPlay state and territory data tables
+      </a>.
     </p>
   </section>
 
 
   <section>
-    <h2>3. Hiking and NSW national parks</h2>
+    <h2>3. Hiking in the context of NSW national parks</h2>
 
     <p class="section-intro">
-      National parks are an important setting for hiking. Looking more
-      closely at NSW shows how park visitation varies across regions and
-      how strongly Greater Sydney contributes to overall visits.
+      To place hiking participation in a broader outdoor context, we look at
+      how NSW national park visitation varies across regions and over time.
+      Greater Sydney records the highest recent visitation.
     </p>
 
     <div id="chart3" class="chart-card"></div>
 
     <p class="chart-note">
-      Greater Sydney accounts for the largest share of recent NSW park visitation,
+      Greater Sydney records the highest estimated park visitation,
       with the gap widening noticeably in FY24–25.
     </p>
-    <p class="source">
 
-      Source: NSW National Parks and Wildlife Service, Parks Visitation Survey FY24–25.
+    <p class="source">
+      Source:
+      <a
+        href="https://www.environment.nsw.gov.au/topics/parks-reserves-and-protected-areas/park-management/npws-park-management/park-visitor-survey"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        NSW National Parks and Wildlife Service, Parks Visitation Survey FY24–25
+      </a>.
     </p>
   </section>
 
@@ -214,10 +325,33 @@
     </div>
 
     <p class="source">
-      Source: NSW National Parks and Wildlife Service, Parks Visitation Survey FY24–25.
+      Source:
+      <a
+        href="https://www.environment.nsw.gov.au/topics/parks-reserves-and-protected-areas/park-management/npws-park-management/park-visitor-survey"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        NSW National Parks and Wildlife Service, Parks Visitation Survey FY24–25
+      </a>.
     </p>
   </section>
 
+  <footer class="page-footer">
+    <p>
+      Created by Koh Jia Ler · FIT3179 Data Visualisation 2 · October 2026
+    </p>
+
+    <p>
+      Data: Australian Sports Commission (AusPlay) and
+      NSW National Parks and Wildlife Service.
+    </p>
+
+    <p>
+      Generative AI was used to support code debugging, wording refinement
+      and design feedback. All final visualisation decisions were reviewed
+      and implemented by the author.
+    </p>
+  </footer>
 </main>
 
 <script>
@@ -225,8 +359,40 @@
 
   const embedOptions = {
     actions: false,
+
     loader: {
       baseURL: baseURL
+    },
+
+    config: {
+      font: "Inter",
+
+      title: {
+        font: "Inter",
+        fontWeight: 700,
+        fontSize: 15,
+        subtitleFont: "Inter",
+        subtitleFontWeight: 400,
+        subtitleFontSize: 12,
+        subtitleColor: "#59665f",
+        anchor: "start"
+      },
+
+      axis: {
+        labelFont: "Inter",
+        titleFont: "Inter",
+        labelColor: "#33413b",
+        titleColor: "#27352f",
+        titleFontWeight: 600
+      },
+
+      legend: {
+        labelFont: "Inter",
+        titleFont: "Inter",
+        titleFontWeight: 600,
+        labelColor: "#33413b",
+        titleColor: "#27352f"
+      }
     }
   };
 
