@@ -14,7 +14,7 @@
   "layer": [
     {
       "data": {
-        "url": "data/maps/npws_branches.json",
+        "url": "data/maps/NPWS_Branches.json",
         "format": {
           "type": "topojson",
           "feature": "NPWS_Branches"
