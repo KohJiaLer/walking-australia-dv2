@@ -2,11 +2,6 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 360,
   "height": 360,
-  "title": {
-    "text": "Most national park walks last between one and four hours",
-    "subtitle": "Each square represents about 1% of walkers; reported values sum to 99% due to rounding",
-    "anchor": "start"
-  },
   "data": {
     "url": "data/walking_duration_waffle_final.csv"
   },
@@ -65,11 +60,11 @@
           "Rounding remainder"
         ],
         "range": [
-          "#355C4D",
-          "#C9D2CE",
-          "#8FA79C",
-          "#B68A5A",
-          "#F4F4F2"
+          "#3E6872",
+          "#C4CDD0",
+          "#7D959B",
+          "#C28D62",
+          "#ECEFEE"
         ]
       },
       "legend": {

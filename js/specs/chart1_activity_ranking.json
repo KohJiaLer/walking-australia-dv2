@@ -15,73 +15,96 @@
       "as": "group"
     }
   ],
-
-  "mark": {
-    "type": "bar",
-    "cornerRadiusEnd": 3
-  },
-
-  "encoding": {
-    "y": {
-      "field": "activity",
-      "type": "nominal",
-      "sort": "-x",
-      "title": null,
-      "axis": {
-        "labelLimit": 180
-      }
-    },
-
-    "x": {
-      "field": "participation_rate_pct",
-      "type": "quantitative",
-      "title": "Adult participation rate (%)",
-      "scale": {
-        "zero": true,
-        "domain": [0, 55]
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "cornerRadiusEnd": 3
       },
-      "axis": {
-        "format": ".0f",
-        "values": [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55],
-        "gridColor": "#E5E8E6",
-        "gridOpacity": 0.8
-      }
-    },
-
-    "color": {
-      "field": "group",
-      "type": "nominal",
-      "scale": {
-        "domain": [
-          "Bush walking",
-          "Other activities"
-        ],
-        "range": [
-          "#355C4D",
-          "#C9D2CE"
+      "encoding": {
+        "y": {
+          "field": "activity",
+          "type": "nominal",
+          "sort": "-x",
+          "title": null,
+          "axis": {
+            "labelLimit": 180
+          }
+        },
+        "x": {
+          "field": "participation_rate_pct",
+          "type": "quantitative",
+          "title": "Adult participation rate (%)",
+          "scale": {
+            "zero": true,
+            "domain": [0, 58]
+          },
+          "axis": {
+            "format": ".0f",
+            "values": [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55],
+            "gridColor": "#E5E8E6",
+            "gridOpacity": 0.8
+          }
+        },
+        "color": {
+          "field": "group",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Bush walking",
+              "Other activities"
+            ],
+            "range": [
+              "#355C4D",
+              "#C9D2CE"
+            ]
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {
+            "field": "activity",
+            "type": "nominal",
+            "title": "Activity"
+          },
+          {
+            "field": "participation_rate_pct",
+            "type": "quantitative",
+            "title": "Participation rate (%)",
+            "format": ".1f"
+          }
         ]
-      },
-      "legend": null
+      }
     },
 
-    "tooltip": [
-      {
-        "field": "activity",
-        "type": "nominal",
-        "title": "Activity"
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 6,
+        "fontSize": 11,
+        "color": "#33413b"
       },
-      {
-        "field": "participation_rate_pct",
-        "type": "quantitative",
-        "title": "Participation rate (%)",
-        "format": ".1f"
+      "encoding": {
+        "y": {
+          "field": "activity",
+          "type": "nominal",
+          "sort": "-x"
+        },
+        "x": {
+          "field": "participation_rate_pct",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 58]
+          }
+        },
+        "text": {
+          "field": "participation_rate_pct",
+          "type": "quantitative",
+          "format": ".1f"
+        }
       }
-    ]
-  },
-
-  "title": {
-    "text": "Hiking ranks third among Australia's most popular activities",
-    "subtitle": "Adult participation rate, January–December 2025 • AusPlay category: “Bush walking”",
-    "anchor": "start"
-  }
+    }
+  ]
 }

@@ -1,17 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
 
-  "width": 520,
+  "width": 700,
   "height": 320,
-
-  "title": {
-    "text": "Only a small share of hiking participation is formally organised",
-    "subtitle": [
-      "Total and organised hiking participation by age group, 2025 • AusPlay category: “Bush walking”",
-      "Green = total participation  |  Brown = organised participation"
-    ],
-    "anchor": "start"
-  },
 
   "data": {
     "url": "data/bushwalking_age_organised.csv"
@@ -39,7 +30,7 @@
       "mark": {
         "type": "rule",
         "strokeWidth": 3,
-        "color": "#AAB7B1"
+        "color": "#C5CBC8"
       },
 
       "encoding": {
@@ -48,7 +39,8 @@
           "type": "quantitative",
           "title": "Participation rate (%)",
           "scale": {
-            "domain": [0, 25]
+            "domain": [0, 25],
+            "nice": false
           }
         },
 
@@ -81,7 +73,7 @@
           {
             "field": "organised_participation_pct",
             "type": "quantitative",
-            "title": "Organised",
+            "title": "Organised participation (%)",
             "format": ".1f"
           }
         ]
@@ -93,7 +85,7 @@
         "type": "point",
         "filled": true,
         "size": 120,
-        "color": "#355C4D"
+        "color": "#4C7180"
       },
 
       "encoding": {
@@ -111,7 +103,7 @@
           {
             "field": "total_participation_pct",
             "type": "quantitative",
-            "title": "Total participation",
+            "title": "Total participation (%)",
             "format": ".1f"
           }
         ]

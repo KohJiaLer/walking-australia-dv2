@@ -1,0 +1,93 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": 650,
+  "height": 470,
+
+  "projection": {
+    "type": "conicEqualArea",
+    "parallels": [-29, -36],
+    "rotate": [-147, 0, 0],
+    "center": [0, -33]
+  },
+
+  "layer": [
+    {
+      "data": {
+        "url": "data/maps/npws_branches.json",
+        "format": {
+          "type": "topojson",
+          "feature": "NPWS_Branches"
+        }
+      },
+
+      "mark": {
+        "type": "geoshape",
+        "fill": "#EEF1ED",
+        "stroke": "#adb2ae",
+        "strokeWidth": 0.8
+      }
+    },
+
+    {
+      "data": {
+        "url": "data/maps/NPWS_TrackSection1.json",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+
+        "transform": [
+        {
+            "calculate": "datum.geometry.coordinates[0]",
+            "as": "longitude"
+        },
+        {
+            "calculate": "datum.geometry.coordinates[1]",
+            "as": "latitude"
+        },
+        {
+            "calculate": "datum.properties.d_AssetTyp",
+            "as": "track_class"
+        },
+        {
+            "calculate": "datum.properties.d_Branch",
+            "as": "branch"
+        }
+        ],
+
+        "mark": {
+        "type": "circle",
+        "size": 8,
+        "opacity": 0.35,
+        "color": "#5E746D"
+        },
+
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+
+        "tooltip": [
+          {
+            "field": "track_class",
+            "type": "nominal",
+            "title": "Track class"
+          },
+          {
+            "field": "branch",
+            "type": "nominal",
+            "title": "NPWS branch"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -4,12 +4,6 @@
   "width": 520,
   "height": 330,
 
-  "title": {
-    "text": "Greater Sydney increasingly dominates park visitation",
-    "subtitle": "Estimated domestic visits to NPWS parks by branch and survey year",
-    "anchor": "start"
-  },
-
   "data": {
     "url": "data/branch_visitation_history.csv"
   },
@@ -62,7 +56,13 @@
       "type": "quantitative",
       "title": "Estimated visits",
       "scale": {
-        "scheme": "greens"
+        "range": [
+          "#EDF1F3",
+          "#CBD7DC",
+          "#9EB4BD",
+          "#6B8792",
+          "#3B5964"
+        ]
       },
       "legend": {
         "format": ".2s"

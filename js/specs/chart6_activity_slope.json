@@ -1,14 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
 
-  "width": 520,
+  "width": 700,
   "height": 340,
-
-  "title": {
-    "text": "Hiking participation increased from 2024 to 2025",
-    "subtitle": "Selected outdoor activities, adult participation rate • AusPlay category: “Bush walking”",
-    "anchor": "start"
-  },
 
   "data": {
     "url": "data/activity_change.csv"
@@ -131,7 +125,7 @@
           {
             "field": "participation_rate_pct",
             "type": "quantitative",
-            "title": "Participation rate",
+            "title": "Participation rate (%)",
             "format": ".1f"
           }
         ]

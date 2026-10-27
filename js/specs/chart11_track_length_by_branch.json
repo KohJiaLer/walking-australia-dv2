@@ -1,0 +1,113 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": 720,
+  "height": 360,
+
+  "data": {
+    "url": "data/track_sections.csv"
+  },
+
+  "transform": [
+    {
+      "filter": "datum.d_Branch != '' && datum.LengthM > 0"
+    },
+    {
+      "aggregate": [
+        {
+          "op": "sum",
+          "field": "LengthM",
+          "as": "total_length_m"
+        }
+      ],
+      "groupby": [
+        "d_Branch"
+      ]
+    },
+    {
+      "calculate": "datum.total_length_m / 1000",
+      "as": "total_length_km"
+    }
+  ],
+
+  "layer": [
+    {
+        "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 120,
+        "color": "#6B7A84"
+        },
+
+        "encoding": {
+        "y": {
+            "field": "d_Branch",
+            "type": "nominal",
+            "title": null,
+            "sort": "-x"
+        },
+
+        "x": {
+            "field": "total_length_km",
+            "type": "quantitative",
+            "title": "Total track-section length (km)",
+            "scale": {
+            "domain": [0, 700]
+            }
+        },
+
+        "tooltip": [
+            {
+            "field": "d_Branch",
+            "type": "nominal",
+            "title": "NPWS branch"
+            },
+            {
+            "field": "total_length_km",
+            "type": "quantitative",
+            "title": "Total track length (km)",
+            "format": ",.0f"
+            }
+        ]
+        }
+    },
+
+    {
+        "transform": [
+        {
+            "calculate": "format(datum.total_length_km, '.0f') + ' km'",
+            "as": "length_label"
+        }
+        ],
+
+        "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 8,
+        "fontSize": 11,
+        "color": "#33413b"
+        },
+
+        "encoding": {
+        "y": {
+            "field": "d_Branch",
+            "type": "nominal",
+            "sort": "-x"
+        },
+
+        "x": {
+            "field": "total_length_km",
+            "type": "quantitative",
+            "scale": {
+            "domain": [0, 700]
+            }
+        },
+
+        "text": {
+            "field": "length_label"
+        }
+        }
+    }
+    ]
+}

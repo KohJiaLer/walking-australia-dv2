@@ -1,0 +1,89 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": 760,
+  "height": 380,
+
+  "data": {
+    "url": "data/track_sections.csv"
+  },
+
+  "transform": [
+    {
+      "filter": "indexof(['Class 1 All Access Track', 'Class 2 Graded Track', 'Class 3 Walking Track', 'Class 4 Hiking Track', 'Class 5 Marked Route', 'Class 6 Unmarked Route'], datum.d_AssetTyp) >= 0 && datum.LengthM > 0"
+    }
+  ],
+
+  "mark": {
+    "type": "boxplot",
+    "extent": 1.5,
+    "size": 38
+  },
+
+  "encoding": {
+    "x": {
+      "field": "d_AssetTyp",
+      "type": "ordinal",
+      "title": "Track class",
+      "sort": [
+        "Class 1 All Access Track",
+        "Class 2 Graded Track",
+        "Class 3 Walking Track",
+        "Class 4 Hiking Track",
+        "Class 5 Marked Route",
+        "Class 6 Unmarked Route"
+      ],
+      "axis": {
+        "labelAngle": -25,
+        "labelLimit": 150
+      }
+    },
+
+    "y": {
+      "field": "LengthM",
+      "type": "quantitative",
+      "title": "Track section length (m)",
+      "scale": {
+        "type": "sqrt"
+      }
+    },
+
+    "color": {
+        "field": "d_AssetTyp",
+        "type": "nominal",
+        "scale": {
+            "domain": [
+            "Class 1 All Access Track",
+            "Class 2 Graded Track",
+            "Class 3 Walking Track",
+            "Class 4 Hiking Track",
+            "Class 5 Marked Route",
+            "Class 6 Unmarked Route"
+            ],
+            "range": [
+            "#A8B7B1",
+            "#789E93",
+            "#4F7468",
+            "#C28A5B",
+            "#9A7183",
+            "#6A6E78"
+            ]
+        },
+        "legend": null
+    },
+
+    "tooltip": [
+      {
+        "field": "d_AssetTyp",
+        "type": "nominal",
+        "title": "Track class"
+      },
+      {
+        "field": "LengthM",
+        "type": "quantitative",
+        "title": "Section length (m)",
+        "format": ",.0f"
+      }
+    ]
+  }
+}

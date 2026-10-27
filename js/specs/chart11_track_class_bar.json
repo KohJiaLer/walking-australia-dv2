@@ -1,0 +1,139 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "width": 700,
+  "height": 300,
+
+  "data": {
+    "url": "data/track_sections.csv"
+  },
+
+  "transform": [
+    {
+      "filter": "indexof(['Class 1 All Access Track', 'Class 2 Graded Track', 'Class 3 Walking Track', 'Class 4 Hiking Track', 'Class 5 Marked Route', 'Class 6 Unmarked Route'], datum.d_AssetTyp) >= 0"
+    },
+    {
+      "aggregate": [
+        {
+          "op": "count",
+          "as": "section_count"
+        }
+      ],
+      "groupby": [
+        "d_AssetTyp"
+      ]
+    }
+  ],
+
+    "layer": [
+    {
+        "mark": {
+            "type": "bar",
+            "cornerRadiusEnd": 3
+        },
+
+        "encoding": {
+        "y": {
+            "field": "d_AssetTyp",
+            "type": "nominal",
+            "title": null,
+            "sort": [
+            "Class 1 All Access Track",
+            "Class 2 Graded Track",
+            "Class 3 Walking Track",
+            "Class 4 Hiking Track",
+            "Class 5 Marked Route",
+            "Class 6 Unmarked Route"
+            ]
+        },
+
+        "x": {
+            "field": "section_count",
+            "type": "quantitative",
+            "title": "Number of track sections",
+            "scale": {
+            "domain": [0, 2700]
+            }
+        },
+
+        "color": {
+            "field": "d_AssetTyp",
+            "type": "nominal",
+            "scale": {
+                "domain": [
+                "Class 1 All Access Track",
+                "Class 2 Graded Track",
+                "Class 3 Walking Track",
+                "Class 4 Hiking Track",
+                "Class 5 Marked Route",
+                "Class 6 Unmarked Route"
+                ],
+                "range": [
+                "#A8B7B1",
+                "#789E93",
+                "#4F7468",
+                "#C28A5B",
+                "#9A7183",
+                "#6A6E78"
+                ]
+            },
+            "legend": null
+            },
+
+        "tooltip": [
+            {
+            "field": "d_AssetTyp",
+            "type": "nominal",
+            "title": "Track class"
+            },
+            {
+            "field": "section_count",
+            "type": "quantitative",
+            "title": "Number of sections",
+            "format": ","
+            }
+        ]
+        }
+    },
+
+    {
+        "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 6,
+        "fontSize": 11,
+        "color": "#33413b"
+        },
+
+        "encoding": {
+        "y": {
+            "field": "d_AssetTyp",
+            "type": "nominal",
+            "sort": [
+            "Class 1 All Access Track",
+            "Class 2 Graded Track",
+            "Class 3 Walking Track",
+            "Class 4 Hiking Track",
+            "Class 5 Marked Route",
+            "Class 6 Unmarked Route"
+            ]
+        },
+
+        "x": {
+            "field": "section_count",
+            "type": "quantitative",
+            "scale": {
+            "domain": [0, 2700]
+            }
+        },
+
+        "text": {
+            "field": "section_count",
+            "type": "quantitative",
+            "format": ","
+        }
+        }
+    }
+    ]
+}

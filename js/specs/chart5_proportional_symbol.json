@@ -4,10 +4,11 @@
   "width": 560,
   "height": 430,
 
-  "title": {
-    "text": "NSW has Australia's largest estimated hiking population",
-    "subtitle": "Estimated adults participating in “Bush walking”, 2025",
-    "anchor": "start"
+  "projection": {
+    "type": "conicEqualArea",
+    "parallels": [-18, -36],
+    "rotate": [-134, 0, 0],
+    "center": [0, -25]
   },
 
   "layer": [
@@ -20,13 +21,6 @@
         }
       },
 
-      "projection": {
-        "type": "conicEqualArea",
-        "parallels": [-18, -36],
-        "rotate": [-134, 0, 0],
-        "center": [0, -25]
-      },
-
       "mark": {
         "type": "geoshape",
         "fill": "#F0F2EF",
@@ -37,14 +31,7 @@
 
     {
       "data": {
-        "url": "/data/state_bushwalking.csv"
-      },
-
-      "projection": {
-        "type": "conicEqualArea",
-        "parallels": [-18, -36],
-        "rotate": [-134, 0, 0],
-        "center": [0, -25]
+        "url": "data/state_bushwalking.csv"
       },
 
       "mark": {
@@ -70,15 +57,17 @@
           "type": "quantitative",
           "title": "Estimated participants",
           "scale": {
-            "range": [80, 2200]
+            "range": [40, 1400]
           },
           "legend": {
+            "title": "Estimated participants",
+            "values": [200000, 600000, 1000000, 1200000],
             "format": ".2s"
           }
         },
 
         "color": {
-          "value": "#355C4D"
+          "value": "#667D76"
         },
 
         "tooltip": [
@@ -96,10 +85,82 @@
           {
             "field": "participation_rate_pct",
             "type": "quantitative",
-            "title": "Participation rate",
+            "title": "Participation rate (%)",
             "format": ".1f"
           }
         ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "group": "ACT",
+            "order": 1,
+            "longitude": 149.13,
+            "latitude": -35.28
+          },
+          {
+            "group": "ACT",
+            "order": 2,
+            "longitude": 151.22,
+            "latitude": -35.20
+          }
+        ]
+      },
+      "mark": {
+        "type": "line",
+        "stroke": "#5e6a64",
+        "strokeWidth": 1.2
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "detail": {
+          "field": "group"
+        },
+        "order": {
+          "field": "order"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "label": "ACT",
+            "longitude": 151.5,
+            "latitude": -35.08
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "font": "Inter",
+        "fontSize": 11,
+        "fontWeight": 700,
+        "align": "left",
+        "baseline": "middle",
+        "color": "#33413b"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label"
+        }
       }
     }
   ]
